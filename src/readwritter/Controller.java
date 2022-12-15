@@ -3,6 +3,7 @@ package readwritter;
 import java.util.Random;
 
 
+
 public class Controller {
     public static int b=0;
     boolean writing ;
@@ -14,26 +15,27 @@ public class Controller {
         while(writing || readers>0){
             waitingWriters++;
             try{
-               wait(); }
+                wait(); }
             catch(InterruptedException ex){
                 waitingWriters--;
-            } 
+            }
         }
+
         waitingWriters--;
         writing=true;
     }
-    
+
     public static synchronized void write(String s){
-          b+=100;
-          
+        b=b+100;
+
     }
     public synchronized void stopWriting(){
         writing = false;
         readersTurn =true;
         notifyAll();
     }
-    
-    
+
+
     public synchronized void startReading() {
 
         while(writing || waitingWriters > 0 && !readersTurn ){
@@ -41,14 +43,14 @@ public class Controller {
                 wait();
             }catch(InterruptedException ex){
             }
-           
+
         } readers++;
     }
 //    public void read() {
 //        //MainFrame.Balance.setText(b+"");
 //
 //    }
-    
+
     public synchronized void stopReading(){
         --readers;
         readersTurn = false;
