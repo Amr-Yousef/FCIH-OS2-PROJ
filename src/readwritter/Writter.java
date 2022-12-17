@@ -15,24 +15,26 @@ import java.util.logging.Logger;
  */
 public class Writter extends Thread {
     String name;
+    public static Controller c = new Controller();
     public Writter(String name) {
         this.name=name;
-          this.setName(name);
+        this.setName(name);
     }
-    
+
 
     @Override
     public void run() {
-      
-            MainFrame.c.statrtWrite();
-            MainFrame.c.write("Money: ");
-            System.out.println("Balance Updated by " + Thread.currentThread().getName() + " Balance now is " + MainFrame.c.getBalance());
-            MainFrame.c.stopWriting();
+
+        MainFrame.c.statrtWrite();
+        MainFrame.c.write("Money: ");
+        MainFrame.jTextArea1.append("Balance Updated by " +this.name + "           Balance now is:   " + c.getBalance() +"\n");
+        MainFrame.c.stopWriting();
     }
-     @Override
+    @Override
+
     public String toString() {
         return  "Balance Updates by Thread : " + name+ " Balance now is " + MainFrame.c.getBalance();
     }
-    
-    
+
+
 }
