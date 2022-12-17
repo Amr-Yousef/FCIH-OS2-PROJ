@@ -9,7 +9,9 @@ package readwritter;
  *
  * @author HP
  */
+
 public class Reader extends Thread {
+    public static Controller c = new Controller();
     String name;
     public Reader(String name){
         this.name=name;
@@ -18,17 +20,20 @@ public class Reader extends Thread {
 
     @Override
     public void run() {
-           MainFrame.c.startReading();
-          // MainFrame.c.read();
-           System.out.println("Balance Viewed by Thread" + Thread.currentThread().getName() + " Balance now is " + MainFrame.c.getBalance());
-           MainFrame.c.stopReading();
-       
+        MainFrame.c.startReading();
+
+        MainFrame.jTextArea1.append("Balance Viewed " + this.name + "           Balance now is:   " + c.getBalance() +"\n");
+        // MainFrame.c.read();
+        //System.out.println("Balance Viewed by Thread" + Thread.currentThread().getName() + " Balance now is " + MainFrame.c.getBalance());
+        MainFrame.c.stopReading();
+
+
     }
 
     @Override
     public String toString() {
         return  "Balance Viewed by Thread" + name + " Balance now is " + MainFrame.c.getBalance();
     }
-    
-    
+
+
 }
