@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package readwritter;
-
-/**
- *
- * @author HP
- */
 
 public class Reader extends Thread {
     public static Controller c = new Controller();
@@ -22,18 +12,13 @@ public class Reader extends Thread {
     public void run() {
         MainFrame.c.startReading();
 
-        MainFrame.jTextArea1.append("Balance Viewed " + this.name + "           Balance now is:   " + c.getBalance() +"\n");
-        // MainFrame.c.read();
-        //System.out.println("Balance Viewed by Thread" + Thread.currentThread().getName() + " Balance now is " + MainFrame.c.getBalance());
+        MainFrame.jTextArea1.append("Balance Viewed by " + this.name + "\tBalance now is: " + c.getBalance() +"\n");
         MainFrame.c.stopReading();
-
-
     }
 
     @Override
     public String toString() {
-        return  "Balance Viewed by Thread" + name + " Balance now is " + MainFrame.c.getBalance();
+        return  "Balance Viewed by Thread" + name + "Balance now is " + MainFrame.c.getBalance();
     }
-
 
 }

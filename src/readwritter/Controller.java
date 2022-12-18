@@ -1,8 +1,5 @@
 package readwritter;
 
-import java.util.Random;
-
-
 
 public class Controller {
     public static int b=0;
@@ -10,7 +7,7 @@ public class Controller {
     int waitingWriters,readers;
     private boolean readersTurn =false;
 
-    public  synchronized void statrtWrite() {
+    public  synchronized void startWriting() {
 
         while(writing || readers>0){
             waitingWriters++;
@@ -46,10 +43,6 @@ public class Controller {
 
         } readers++;
     }
-//    public void read() {
-//        //MainFrame.Balance.setText(b+"");
-//
-//    }
 
     public synchronized void stopReading(){
         --readers;
