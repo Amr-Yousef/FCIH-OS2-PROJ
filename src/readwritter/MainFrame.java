@@ -95,7 +95,8 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-
+         jTextArea1.selectAll();
+        jTextArea1.replaceSelection(" ");
         for(int reader = 0,writer = 0;
             reader<Integer.parseInt(numReader.getText())||writer<Integer.parseInt(numWritter.getText())
                 ;reader++,writer++){
